@@ -66,8 +66,15 @@ class RedditCrawler():
 
 # functions
 def get_subreddit(system_arguments):
-    # TODO: description
     '''
+    Extracts a subreddit from received system arguments.
+    Returns 'None' if no sys.argv[1] supplied.
+
+    ([strings]) -> string or None
+
+    >>> get_subreddit(sys.argv)
+    'http://www.reddit.com/r/dailyprogrammer/'
+
     '''
 
     if len(system_arguments) == 1:
@@ -77,16 +84,23 @@ def get_subreddit(system_arguments):
 
 
 def validate_subreddit(subreddit):
-    # TODO: description
     '''
+    Validates received subreddit and returns a bool, accordingly.
+
+    (string) -> bool
+
+    >>> validate_subreddit('http://www.reddit.com/r/dailyprogrammer/')
+    True
+
     '''
 
     if subreddit is None:
         return False
 
-    # TODO: Validation code, du-uh?
+    if 'reddit.com/r/' in subreddit and '/comments/' not in subreddit:
+        return True
 
-    return True
+    return False
 
 
 def get_crawling_depth(system_arguments):
