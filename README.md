@@ -39,13 +39,13 @@ $ pip install -r requirements.txt
 Usage
 -----
 
-All you have to do is run the script while in project directory like this:
+All you have to do is run the script while in the project directory like this:
 
 ```
 $ python reddit_crawler.py SUBREDDIT CRAWLING_DEPTH
 ```
 
-and supplying ```SUBREDDIT``` and ```CRAWLING_DEPTH```(optional, default is 1), for example:
+and supply ```SUBREDDIT``` along with ```CRAWLING_DEPTH```(optional, default is ```1```), for example:
 
 ```
 $ python reddit_crawler.py http://www.reddit.com/r/dailyprogrammer/ 10
