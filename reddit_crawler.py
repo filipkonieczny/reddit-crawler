@@ -2,26 +2,26 @@
 # encoding: utf-8
 
 
-# TODO: description
-# description
+# TODO: Description.
+# Description.
 
 
-# imports
+# Imports.
 import sys
 
 
-# constants
+# Constants.
 DEFAULT_CRAWLING_DEPTH = 1
 
 
-# classes
+# Classes.
 class RedditCrawler():
-    # TODO: description
+    # TODO: Description.
     '''
     '''
 
     def __init__(self, subreddit, crawling_depth):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
@@ -29,42 +29,42 @@ class RedditCrawler():
         self.crawling_depth = crawling_depth
 
     def crawl(self):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
         pass
 
     def crawl_page(self):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
         pass
 
     def crawl_post(self):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
         pass
 
     def crawl_first_comment(self):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
         pass
 
     def return_data(self):
-        # TODO: description
+        # TODO: Description.
         '''
         '''
 
         pass
 
 
-# functions
+# Functions.
 def get_subreddit(system_arguments):
     '''
     Extracts a subreddit from received system arguments.
@@ -149,7 +149,7 @@ def validate_crawling_depth(crawling_depth):
 
 
 def create_crawler(subreddit, crawling_depth):
-    # TODO: description
+    # TODO: Description.
     '''
     '''
 
@@ -157,7 +157,7 @@ def create_crawler(subreddit, crawling_depth):
 
 
 def crawl_subreddit(crawler):
-    # TODO: description
+    # TODO: Description.
     '''
     '''
 
@@ -165,7 +165,7 @@ def crawl_subreddit(crawler):
 
 
 def save_data(crawler):
-    # TODO: description
+    # TODO: Description.
     '''
     '''
 
@@ -173,8 +173,19 @@ def save_data(crawler):
 
 
 def main():
-    # TODO: description
     '''
+    Main function is responsible for executing all other functions.
+    Also takes care of human-computer interaction, like displaying messages.
+
+    Crawling a subreddit is divided into 3 stages:
+    1) Get subreddit and crawling depth*.
+    * crawling_depth defines how many pages of a given subreddit
+      are meant to be crawled.
+
+    2) Crawl subreddit.
+
+    3) Save crawled data and make anything you want with it.
+
     '''
 
     # TODO: Display 'hello message'.
@@ -182,6 +193,8 @@ def main():
     # TODO: Implement statistics, like:
     # 1. How much time it took,
     # 2. How many pages were crawled, etc.
+
+    # 1) Get subreddit and crawling depth.
     subreddit = get_subreddit(sys.argv)
     if not validate_subreddit(subreddit):
         print "Oops, looks like you didn't provide a valid subreddit! :(\n"
@@ -195,10 +208,14 @@ def main():
         crawling_depth = DEFAULT_CRAWLING_DEPTH
     print "I'm gonna crawl {} pages for you!".format(crawling_depth)
 
+    # 2) Crawl subreddit.
     reddit_crawler = create_crawler(subreddit, crawling_depth)
     crawl_subreddit(reddit_crawler)
+
+    # 3) Save crawled data.
     save_data(reddit_crawler)
 
 
+# Run the main function when executed from the command line.
 if __name__ == "__main__":
     main()
