@@ -7,6 +7,7 @@
 
 
 # imports
+import sys
 
 
 # constants
@@ -48,7 +49,7 @@ class RedditCrawler():
 
 
 # functions
-def get_subreddit():
+def get_subreddit(system_arguments):
     # TODO: description
     '''
     '''
@@ -56,7 +57,7 @@ def get_subreddit():
     pass
 
 
-def validate_subreddit():
+def validate_subreddit(subreddit):
     # TODO: description
     '''
     '''
@@ -64,7 +65,7 @@ def validate_subreddit():
     pass
 
 
-def get_crawling_depth():
+def get_crawling_depth(system_arguments):
     # TODO: description
     '''
     '''
@@ -72,7 +73,7 @@ def get_crawling_depth():
     pass
 
 
-def validate_crawling_depth():
+def validate_crawling_depth(crawling_depth):
     # TODO: description
     '''
     '''
@@ -80,7 +81,7 @@ def validate_crawling_depth():
     pass
 
 
-def create_crawler():
+def create_crawler(subreddit, crawling_depth):
     # TODO: description
     '''
     '''
@@ -88,7 +89,7 @@ def create_crawler():
     pass
 
 
-def crawl_subreddit():
+def crawl_subreddit(crawler):
     # TODO: description
     '''
     '''
@@ -96,13 +97,31 @@ def crawl_subreddit():
     pass
 
 
-def save_data():
+def save_data(crawler):
     # TODO: description
     '''
     '''
 
     pass
+
+
+def main():
+    # TODO: description
+    '''
+    '''
+
+    subreddit = get_subreddit(sys.argv)
+    if not validate_subreddit(subreddit):
+        pass
+
+    crawling_depth = get_crawling_depth(sys.argv)
+    if not validate_crawling_depth(crawling_depth):
+        pass
+
+    reddit_crawler = create_crawler(subreddit, crawling_depth)
+    crawl_subreddit(reddit_crawler)
+    save_data(reddit_crawler)
 
 
 if __name__ == "__main__":
-    pass
+    main()
