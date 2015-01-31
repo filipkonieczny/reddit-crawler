@@ -2,12 +2,15 @@
 # encoding: utf-8
 
 
-# TODO: Description.
-# Description.
+# The story behind this crawler is that I wanted to
+# get all of http://www.reddit.com/r/dailyprogrammer/ challanges,
+# but couldn't have been bothered to go through every post,
+# page by page, for hundreds of posts.
 
 
 # Imports.
-import sys
+from sys import argv
+from time import time
 
 
 # Constants.
@@ -139,7 +142,6 @@ def validate_crawling_depth(crawling_depth):
     if crawling_depth is None:
         return False
 
-    # TODO: Validation code, du-uh?
     try:
         crawling_depth = int(crawling_depth)
     except ValueError:
@@ -149,21 +151,31 @@ def validate_crawling_depth(crawling_depth):
 
 
 def create_crawler(subreddit, crawling_depth):
-    # TODO: Description.
     '''
+    Creates a RedditCrawler instance.
+
+    (string, int) -> RedditCrawler()
+
+    >>> create_crawler('http://www.reddit.com/r/dailyprogrammer/', 10)
+    <__main__.RedditCrawler instance at 0x7f731f74b710>
+
     '''
 
     return RedditCrawler(subreddit, crawling_depth)
 
 
 def crawl_subreddit(crawler):
-    # TODO: Description.
     '''
+    Initiates crawling process.
+
+    (RedditCrawler()) -> RedditCrawler().crawl()
+
     '''
 
-    pass
+    crawler.crawl()
 
 
+# TODO:
 def save_data(crawler):
     # TODO: Description.
     '''
@@ -188,21 +200,23 @@ def main():
 
     '''
 
-    # TODO: Display 'hello message'.
+    # Print 'Hello' message.
+    print '\nOhai!\n\nWelcome to Reddit Crawler - enjoy!\n\n'
 
     # TODO: Implement statistics, like:
-    # 1. How much time it took,
-    # 2. How many pages were crawled, etc.
+    # 1. How many pages were crawled, etc.
+    # Statistics.
+    start = time()
 
     # 1) Get subreddit and crawling depth.
-    subreddit = get_subreddit(sys.argv)
+    subreddit = get_subreddit(argv)
     if not validate_subreddit(subreddit):
         print "Oops, looks like you didn't provide a valid subreddit! :(\n"
         print 'Abort mission, I repeat: abort mission!!'
         return
-    print 'Subreddit provided: {}'.format(subreddit)
+    print "Subreddit provided: '{}'".format(subreddit)
 
-    crawling_depth = get_crawling_depth(sys.argv)
+    crawling_depth = get_crawling_depth(argv)
     if not validate_crawling_depth(crawling_depth):
         print "Crawling depth not supplied or invalid! :("
         crawling_depth = DEFAULT_CRAWLING_DEPTH
@@ -214,6 +228,14 @@ def main():
 
     # 3) Save crawled data.
     save_data(reddit_crawler)
+
+    # Print statistics.
+    stop = time()
+    duration = stop - start
+    print '\nExecuted in {0:.2f} seconds!'.format(duration)
+
+    # Print 'Goodbye' message.
+    print '\n\nThanks for using Reddit Crawler, cheers!\n'
 
 
 # Run the main function when executed from the command line.
