@@ -11,6 +11,8 @@
 # Imports.
 from sys import argv
 from time import time
+import requests
+import json
 
 
 # Constants.
@@ -36,7 +38,13 @@ class RedditCrawler():
         '''
         '''
 
-        pass
+        r = requests.get(self.subreddit)
+
+        data = r.json()
+        print data
+
+        with open('data.json', 'w') as outfile:
+            json.dump(data, outfile, indent=4)
 
     def crawl_page(self):
         # TODO: Description.
