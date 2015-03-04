@@ -17,6 +17,7 @@ import json
 
 # Constants.
 DEFAULT_CRAWLING_DEPTH = 1
+DATA_FILE = 'data.json'
 
 
 # Classes.
@@ -40,11 +41,10 @@ class RedditCrawler():
 
         r = requests.get(self.subreddit)
 
-        data = r.json()
-        print data
+        self.data = r.json()
 
-        with open('data.json', 'w') as outfile:
-            json.dump(data, outfile, indent=4)
+        # TEST:
+        print self.data
 
     def crawl_page(self):
         # TODO: Description.
@@ -183,13 +183,16 @@ def crawl_subreddit(crawler):
     crawler.crawl()
 
 
-# TODO:
 def save_data(crawler):
-    # TODO: Description.
     '''
+    Saves the data stored in RedditCrawler().data into a .json file.
+
+    (RedditCrawler()) -> DATA_FILE
+
     '''
 
-    pass
+    with open(DATA_FILE, 'w') as outfile:
+        json.dump(crawler.data, outfile, indent=4)
 
 
 def main():
