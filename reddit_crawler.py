@@ -44,7 +44,7 @@ class RedditCrawler():
         self.data = r.json()
 
         # TEST:
-        print self.data
+        print (self.data)
 
     def crawl_page(self):
         # TODO: Description.
@@ -212,7 +212,7 @@ def main():
     '''
 
     # Print 'Hello' message.
-    print '\nOhai!\n\nWelcome to Reddit Crawler - enjoy!\n\n'
+    print ('\nOhai!\n\nWelcome to Reddit Crawler - enjoy!\n\n')
 
     # TODO: Implement statistics, like:
     # 1. How many pages were crawled, etc.
@@ -222,16 +222,16 @@ def main():
     # 1) Get subreddit and crawling depth.
     subreddit = get_subreddit(argv)
     if not validate_subreddit(subreddit):
-        print "Oops, looks like you didn't provide a valid subreddit! :(\n"
-        print 'Abort mission, I repeat: abort mission!!'
+        print ("Oops, looks like you didn't provide a valid subreddit! :(\n")
+        print ('Abort mission, I repeat: abort mission!!')
         return
-    print "Subreddit provided: '{}'".format(subreddit)
+    print ("Subreddit provided: '{}'".format(subreddit))
 
     crawling_depth = get_crawling_depth(argv)
     if not validate_crawling_depth(crawling_depth):
-        print "Crawling depth not supplied or invalid! :("
+        print ("Crawling depth not supplied or invalid! :(")
         crawling_depth = DEFAULT_CRAWLING_DEPTH
-    print "I'm gonna crawl {} pages for you!".format(crawling_depth)
+    print ("I'm gonna crawl {} pages for you!".format(crawling_depth))
 
     # 2) Crawl subreddit.
     reddit_crawler = create_crawler(subreddit, crawling_depth)
@@ -243,10 +243,10 @@ def main():
     # Print statistics.
     stop = time()
     duration = stop - start
-    print '\nExecuted in {0:.2f} seconds!'.format(duration)
+    print ('\nExecuted in {0:.2f} seconds!'.format(duration))
 
     # Print 'Goodbye' message.
-    print '\n\nThanks for using Reddit Crawler, cheers!\n'
+    print ('\n\nThanks for using Reddit Crawler, cheers!\n')
 
 
 # Run the main function when executed from the command line.
